@@ -33,7 +33,31 @@ class App extends React.Component {
         "rating": 7.9,
         "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
         "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gKG5QGz5Ngf8fgWpBsWtlg5L2SF.jpg"
-      }
+      } ,
+
+      {
+        "id": 4,
+        "name": "Rogue",
+        "rating": 7.4,
+        "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+        "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/uOw5JD8IlD546feZ6oxbIjvN66P.jpg"
+    },
+
+    {
+        "id": 5,
+        "name": "Project Power",
+        "rating": 6.7,
+        "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+        "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/TnOeov4w0sTtV2gqICqIxVi74V.jpg"
+    },
+
+    {
+        "id": 6,
+        "name": "Superman",
+        "rating": 7.6,
+        "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
+        "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/6Bbq8qQWpoApLZYWFFAuZ1r2gFw.jpg"
+    }
     
     ]
 
@@ -44,9 +68,15 @@ class App extends React.Component {
     const newMovieList = this.state.movies.filter(
       m => m.id !== movie.id
     );
-    this.setState({
+    // this.setState({     // Use this in first state assign operation
+    //   movies : newMovieList
+    // });
+
+    this.setState( state => ({   // Use this in update state operation
       movies : newMovieList
-    });
+    }));               
+
+
   }
 
 
