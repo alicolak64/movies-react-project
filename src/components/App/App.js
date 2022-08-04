@@ -1,6 +1,12 @@
 import React from 'react';
 
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 import './App.css';
+
+import SearchBar from '../SearchBar/SearchBar';
+import MovieList from '../MovieList/MovieList';
+
 class App extends React.Component {
   
   state = {
@@ -37,8 +43,13 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="App">
-        <p>Hello World</p>
+      <div className="container">
+        <div className="row">
+          <dic className="col-lg-12">
+            <SearchBar/>
+          </dic>
+        </div>
+        <MovieList/>
       </div>
     );
   }
