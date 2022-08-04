@@ -2,13 +2,15 @@ import React from "react";
 
 // import './SearchBar.css';
 
-function SearchBar() {
+class SearchBar extends React.Component {
+  render() {
     return (
-      <div className="SearchBar">
-        <p>SearchBar</p>
+      <div className="MovieList">
+        <p>MovieList</p>
       </div>
     );
   }
+}
 
 
 export default SearchBar;
