@@ -1,11 +1,9 @@
 import React from 'react';
 
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-import './App.css';
-
-import SearchBar from '../SearchBar/SearchBar';
-import MovieList from '../MovieList/MovieList';
+import SearchBar from './SearchBar';
+import MovieList from './MovieList';
 
 class App extends React.Component {
   
@@ -44,14 +42,17 @@ class App extends React.Component {
   render () {
     return (
       <div className="container">
-        <div className="row">
-          <dic className="col-lg-12">
-            <SearchBar/>
-          </dic>
-        </div>
-        <MovieList/>
+          <div className="row">
+              <div className="col-lg-12">
+                  <SearchBar />
+              </div>
+          </div>
+
+          <MovieList 
+          movies = {this.state.movies}
+            />
       </div>
-    );
+  );
   }
 
 }
