@@ -4,15 +4,16 @@ import React from "react";
 
 class SearchBar extends React.Component {
 
-  state = {
-    search : ""
-  };
+  // state = {
+  //   search : ""
+  // };
 
   handleFormSubmit = (event) => {
     event.preventDefault()
   }
 
   render() {
+
     return (
       <form onSubmit={this.handleFormSubmit}>
         <div className="form-row mb-5">
@@ -21,14 +22,17 @@ class SearchBar extends React.Component {
               type="text"
               className="form-control"
               placeholder="Search a movie"
-              onChange = { 
-                (event) => {
-                  this.setState({
-                    search : event.target.value
-                  });
-                }
-              }
-              value = {this.state.search}
+              
+              // onChange = { 
+              //   (event) => {
+              //     this.setState({
+              //       search : event.target.value
+              //     });
+              //   }
+              // }
+              // value = {this.state.search}
+
+              onChange={this.props.searchProp}
             />
             </div>
         </div>  

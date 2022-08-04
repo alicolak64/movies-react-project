@@ -59,7 +59,11 @@ class App extends React.Component {
         "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/6Bbq8qQWpoApLZYWFFAuZ1r2gFw.jpg"
     }
     
-    ]
+    ] ,
+    
+    search : ""
+
+
 
   }
 
@@ -79,18 +83,34 @@ class App extends React.Component {
 
   }
 
+  searchMovie = (event) => {
+    console.log(event.target.value)
+    this.setState( {
+      search : event.target.value
+    })
+  }
+
 
   render () {
+
+    let filteredMovies = this.state.movies.filter (
+      (movie) => {
+        return movie.name.toLowerCase().indexOf(this.state.search.trim().toLowerCase()) !== -1
+      }
+    )
+
     return (
       <div className="container">
           <div className="row">
               <div className="col-lg-12">
-                  <SearchBar />
+                  <SearchBar 
+                  searchProp = {this.searchMovie}
+                  />
               </div>
           </div>
 
           <MovieList 
-          movies = {this.state.movies}
+          movies = {filteredMovies}
           deleteMovieProp = {this.deleteMovie}
             />
       </div>
