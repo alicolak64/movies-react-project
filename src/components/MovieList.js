@@ -2,7 +2,15 @@ import React from "react";
 
 // import './MovieList.css';
 
-const MovieList = (props) => {
+const MovieList = (props) => {    // If a component is a stateless functional component, it can be written as a function.
+
+
+    // function handleClick (event) {
+    //     console.log(event);
+    //     console.log("Clicked on: " + event.name);
+    // }
+
+
 
     return (
         <div className="row">
@@ -24,7 +32,11 @@ const MovieList = (props) => {
                                 {movie.overview}
                             </p>
                             <div className="d-flex justify-content-between align-items-center">
-                                <button type="button" className="btn btn-md btn-outline-danger">
+                                <button type="button" onClick={ 
+                                    (event) => {
+                                        props.deleteMovieProp(movie);
+                                    }
+                                } className="btn btn-md btn-outline-danger">
                                     Delete
                                 </button>
                                 <h2>
