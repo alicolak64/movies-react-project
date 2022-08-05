@@ -33,36 +33,54 @@ class App extends React.Component {
     search : ""
   }
 
-  async componentDidMount () {   // Fetch method
-    const baseUrl = "http://localhost:3002/movies";
-    const response = await fetch(baseUrl);   // response is a promise
-    const data = await response.json();
-    // console.log(data);
-    this.setState({
-      movies : data
-    });
-  }
-
-  // async componentDidMount () {  // Axios method   // axios dowload npm i axios
-
+  // async componentDidMount () {   // Fetch method
   //   const baseUrl = "http://localhost:3002/movies";
-  //   const response = await axios.get(baseUrl);
-  //   // console.log(response.data);
-  //   const data = response.data;
+  //   const response = await fetch(baseUrl);   // response is a promise
+  //   const data = await response.json();
   //   // console.log(data);
   //   this.setState({
   //     movies : data
   //   });
   // }
 
+  async componentDidMount () {  // Axios method   // axios dowload npm i axios
 
-   deleteMovie = async (movie) => {   // Fetch method 
+    const baseUrl = "http://localhost:3002/movies";
+    const response = await axios.get(baseUrl);
+    // console.log(response.data);
+    const data = response.data;
+    // console.log(data);
+    this.setState({
+      movies : data
+    });
+  }
+
+
+  //  deleteMovie = async (movie) => {   // Fetch method 
+  //   const baseUrl = "http://localhost:3002/movies/" + movie.id;
+  //   //const baseUrl2 = `http://localhost:3002/movies/${movie.id}`;
+
+  //   await fetch(baseUrl, {
+  //     method : "DELETE"
+  //   });
+
+  //   const newMovieList = this.state.movies.filter(
+  //     m => m.id !== movie.id
+  //   );
+  //   // this.setState({     // Use this in first state assign operation
+  //   //   movies : newMovieList
+  //   // });
+
+  //   this.setState( state => ({   // Use this in update state operation
+  //     movies : newMovieList
+  //   }));               
+  // }
+
+  deleteMovie = async (movie) => {   // Axios method 
     const baseUrl = "http://localhost:3002/movies/" + movie.id;
     //const baseUrl2 = `http://localhost:3002/movies/${movie.id}`;
 
-    await fetch(baseUrl, {
-      method : "DELETE"
-    });
+    await axios.delete(baseUrl);
 
     const newMovieList = this.state.movies.filter(
       m => m.id !== movie.id

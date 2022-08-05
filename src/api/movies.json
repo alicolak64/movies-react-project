@@ -1,13 +1,6 @@
 {
   "movies": [
     {
-      "id": 2,
-      "name": "Interstellar",
-      "rating": 6.8,
-      "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
-      "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"
-    },
-    {
       "id": 3,
       "name": "Arrow",
       "rating": 7.9,
