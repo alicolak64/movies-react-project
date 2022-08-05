@@ -1,5 +1,7 @@
 import React from 'react';
 
+import axios from 'axios';
+
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import SearchBar from './SearchBar';
@@ -22,22 +24,16 @@ Delete -> For delete data
 
 class App extends React.Component {
   
-  state = {
+  // Fetch -> Fetch is a JavaScript function that allows us to perform asynchronous network queries and returns a promise back to us.
 
-    // Fetch -> Fetch is a JavaScript function that allows us to perform asynchronous network queries and returns a promise back to us.
+  // Axios -> Axios is a JavaScript library that allows us to make HTTP requests from our JavaScript code.
 
-    movies : [
-
-    ] ,
-    
+  state = {  
+    movies : [] ,
     search : ""
-
-
-
   }
 
-
-  async componentDidMount () {
+  async componentDidMount () {   // Fetch method
     const baseUrl = "http://localhost:3002/movies";
     const response = await fetch(baseUrl);   // response is a promise
     const data = await response.json();
@@ -47,8 +43,27 @@ class App extends React.Component {
     });
   }
 
+  // async componentDidMount () {  // Axios method   // axios dowload npm i axios
 
-  deleteMovie = (movie) => {
+  //   const baseUrl = "http://localhost:3002/movies";
+  //   const response = await axios.get(baseUrl);
+  //   // console.log(response.data);
+  //   const data = response.data;
+  //   // console.log(data);
+  //   this.setState({
+  //     movies : data
+  //   });
+  // }
+
+
+   deleteMovie = async (movie) => {   // Fetch method 
+    const baseUrl = "http://localhost:3002/movies/" + movie.id;
+    //const baseUrl2 = `http://localhost:3002/movies/${movie.id}`;
+
+    await fetch(baseUrl, {
+      method : "DELETE"
+    });
+
     const newMovieList = this.state.movies.filter(
       m => m.id !== movie.id
     );
@@ -59,9 +74,21 @@ class App extends React.Component {
     this.setState( state => ({   // Use this in update state operation
       movies : newMovieList
     }));               
-
-
   }
+
+
+  // deleteMovie = (movie) => {
+  //   const newMovieList = this.state.movies.filter(
+  //     m => m.id !== movie.id
+  //   );
+  //   // this.setState({     // Use this in first state assign operation
+  //   //   movies : newMovieList
+  //   // });
+
+  //   this.setState( state => ({   // Use this in update state operation
+  //     movies : newMovieList
+  //   }));               
+  // }
 
   searchMovie = (event) => {
     // console.log(event.target.value)
