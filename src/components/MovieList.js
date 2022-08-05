@@ -12,8 +12,8 @@ const MovieList = (props) => {    // If a component is a stateless functional co
 
 
 
-    return (
-        <div className="row">
+    return ( // Local Api
+        <div className="row">   
 
 
             {props.movies.map((movie) => (
@@ -25,14 +25,14 @@ const MovieList = (props) => {    // If a component is a stateless functional co
                             alt={movie.name}
                         />
                         <div className="card-body">
-                            <h5 className="card-title">
+                            <h3 className="card-title">
                                 {movie.name}
-                            </h5>
+                            </h3>
                             <p className="card-text">
                                 {movie.overview}
                             </p>
                             <div className="d-flex justify-content-between align-items-center">
-                                <button type="button" onClick={ 
+                                <button type="button" onClick={
                                     (event) => {
                                         props.deleteMovieProp(movie);
                                     }
@@ -40,8 +40,8 @@ const MovieList = (props) => {    // If a component is a stateless functional co
                                     Delete
                                 </button>
                                 <h2>
-                                    <span className="badge badge-info">
-                                        {movie.rating}
+                                    <span className="badge bg-info">
+                                    {movie.rating % 1 === 0 ? movie.rating + ".0" : movie.rating}
                                     </span>
                                 </h2>
                             </div>
@@ -52,7 +52,7 @@ const MovieList = (props) => {    // If a component is a stateless functional co
 
         </div>
     )
-}
 
+}
 
 export default MovieList;
