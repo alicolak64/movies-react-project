@@ -8,6 +8,9 @@ import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 
 
+
+
+
 /*
 HTTP Method
 
@@ -21,6 +24,11 @@ Delete -> For delete data
 */
 
 // Postman -> Use for http request
+
+/*
+React Rooter => It is the react library that allows us to create links in a single page react application, 
+specify the urls of the applications or switch between different screens.
+*/
 
 class App extends React.Component {
 
@@ -43,7 +51,7 @@ class App extends React.Component {
   //   });
   // }
 
-  async componentDidMount () {  // Axios method Local Api   // axios dowload npm i axios
+  async componentDidMount() {  // Axios method Local Api   // axios dowload npm i axios
 
     const baseUrl = "http://localhost:3002/movies";
     // create-json server json-server --watch src/api/movies.json --port 3002
@@ -52,7 +60,7 @@ class App extends React.Component {
     const data = response.data;
     // console.log(data);
     this.setState({
-      movies : data
+      movies: data
     });
   }
 
@@ -118,36 +126,45 @@ class App extends React.Component {
   }
 
 
-    render () {   // use only view operation    //Local Api
+  render() {   // use only view operation    //Local Api
 
-      let filteredMovies = this.state.movies.filter (
-        (movie) => {
-          return movie.name.toLowerCase().indexOf(this.state.search.trim().toLowerCase()) !== -1
-        }
-      )
+    let filteredMovies = this.state.movies.filter(
+      (movie) => {
+        return movie.name.toLowerCase().indexOf(this.state.search.trim().toLowerCase()) !== -1
+      }
+    )
 
-      return (
-        <div className="container">
-            <div className="row">
-                <div className="col-lg-12">
-                    <br />
-                    <br />
-                    <SearchBar 
-                    searchProp = {this.searchMovie}
-                    />
-                </div>
-            </div>
+    return (
 
-            <MovieList 
-            movies = {filteredMovies}
-            deleteMovieProp = {this.deleteMovie}
-              />
+
+
+      <div className="container">
+
+        <div className="row">
+          <div className="col-lg-12">
+            <br />
+            <br />
+            <SearchBar
+              searchProp={this.searchMovie}
+            />
+          </div>
         </div>
-    );
-    }
 
+        <MovieList
+          movies={filteredMovies}
+          deleteMovieProp={this.deleteMovie}
+        />
+
+      </div>
+
+
+
+
+    );
   }
 
-  
+}
+
+
 
 export default App;
