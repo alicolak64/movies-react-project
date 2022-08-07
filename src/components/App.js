@@ -46,6 +46,7 @@ class App extends React.Component {
   async componentDidMount () {  // Axios method Local Api   // axios dowload npm i axios
 
     const baseUrl = "http://localhost:3002/movies";
+    // create-json server json-server --watch src/api/movies.json --port 3002
     const response = await axios.get(baseUrl);
     // console.log(response.data);
     const data = response.data;

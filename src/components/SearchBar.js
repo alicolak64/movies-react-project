@@ -17,12 +17,12 @@ class SearchBar extends React.Component {
     return (
       <form onSubmit={this.handleFormSubmit}>
         <div className="form-row mb-5">
-          <div className="col-12">
+          <div className="col-10">
             <input
               type="text"
               className="form-control"
               placeholder="Search a movie"
-              
+
               // onChange = { 
               //   (event) => {
               //     this.setState({
@@ -34,8 +34,17 @@ class SearchBar extends React.Component {
 
               onChange={this.props.searchProp}
             />
-            </div>
-        </div>  
+          </div>
+          <div className="col-2">
+            <button
+              type="button"
+              className="btn btn-nd btn-danger"
+              style={{ float: 'rightx' }}
+            >
+              Add Movie
+            </button>
+          </div>
+        </div>
       </form>
     );
   }
