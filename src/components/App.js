@@ -1,11 +1,15 @@
 import React from 'react';
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import axios from 'axios';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+
+import AddMovie from './AddMovie';
 
 
 
@@ -62,6 +66,17 @@ class App extends React.Component {
     this.setState({
       movies: data
     });
+  }
+
+
+  addMovie = async (movie) => {
+    const baseUrl = "http://localhost:3002/movies/"
+    await axios.post(baseUrl, movie)
+    this.setState(state => ({
+      movies: state.movies.concat([movie])
+    }
+    )
+    )
   }
 
 
@@ -136,29 +151,38 @@ class App extends React.Component {
 
     return (
 
+      <Router>
+        <Routes>
 
+          <Route path="/" element={
+            <div className="container">
 
-      <div className="container">
+              <div className="row">
+                <div className="col-lg-12">
+                  <br />
+                  <br />
+                  <SearchBar
+                    searchProp={this.searchMovie}
+                  />
+                </div>
+              </div>
 
-        <div className="row">
-          <div className="col-lg-12">
-            <br />
-            <br />
-            <SearchBar
-              searchProp={this.searchMovie}
+              <MovieList
+                movies={filteredMovies}
+                deleteMovieProp={this.deleteMovie}
+              />
+
+            </div>
+          } />
+
+          <Route path="/addMovie" element={
+            <AddMovie
+              onAddMovie={(movie) => { this.addMovie(movie) }}
             />
-          </div>
-        </div>
+          } />
 
-        <MovieList
-          movies={filteredMovies}
-          deleteMovieProp={this.deleteMovie}
-        />
-
-      </div>
-
-
-
+        </Routes>
+      </Router>
 
     );
   }

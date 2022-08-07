@@ -27,6 +27,13 @@
       "rating": 7.6,
       "overview": "This is a wider card with supporting text below as a natural lead-in to additional content.",
       "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/6Bbq8qQWpoApLZYWFFAuZ1r2gFw.jpg"
+    },
+    {
+      "name": "Vizontele",
+      "rating": "8",
+      "imageURL": "https://upload.wikimedia.org/wikipedia/tr/3/35/Vizontele.jpg",
+      "overview": "Lives of residents in a small, Anatolian village change when television is introduced to them.\n\n",
+      "id": 7
     }
   ]
 }
