@@ -39,7 +39,7 @@ class SearchBar extends React.Component {
             <button
               type="button"
               className="btn btn-nd btn-danger"
-              style={{ float: 'rightx' }}
+              style={{ float: 'right' }}
             >
               Add Movie
             </button>
