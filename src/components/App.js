@@ -59,6 +59,10 @@ class App extends React.Component {
   // }
 
   async componentDidMount() {  // Axios method Local Api   // axios dowload npm i axios
+    this.getMovies()
+  }
+
+  async getMovies() {  // Axios method Local Api   // axios dowload npm i axios
 
     const baseUrl = "http://localhost:3002/movies";
     // create-json server json-server --watch src/api/movies.json --port 3002
@@ -71,6 +75,11 @@ class App extends React.Component {
     });
   }
 
+  editMovie = async () => {
+    this.getMovies()
+  }
+  
+
 
   addMovie = async (movie) => {
     const baseUrl = "http://localhost:3002/movies/"
@@ -80,6 +89,7 @@ class App extends React.Component {
     }
     )
     )
+    this.getMovies()
   }
 
 
@@ -188,7 +198,9 @@ class App extends React.Component {
           } />
 
           <Route path="/editMovie/:id" element={
-            <EditMovie/>
+            <EditMovie
+              editMovie = {() => { this.editMovie() }}
+            />
           } />
 
         </Routes>

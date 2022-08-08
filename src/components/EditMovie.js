@@ -7,7 +7,7 @@ import { useNavigate , Link , useParams } from "react-router-dom";
 import axios from 'axios';
 
 
-const EditMovie = () => {
+const EditMovie = (props) => {
 
     const [ name , setName ] = useState(" ")
     const [ overview , setOverView ] = useState(" ")
@@ -49,12 +49,41 @@ const EditMovie = () => {
       }, [])
 
     const handleFormSubmit = (e) => {
-        // e.preventDefault();
-        // console.log(e)
-        // const newMovie = serialize(e.target, { hash: true });
-        // props.onAddMovie(newMovie);
-        // navigate("/")
+        e.preventDefault();
+        console.log(e)
+        const updatedMovie = {
+            name : name,
+            overview : overview,
+            rating : rating,
+            imageURL : imageURL
+        }
+        console.log(updatedMovie)
+        axios.put("http://localhost:3002/movies/" + id , updatedMovie)
+        props.editMovie()
+        navigate("/")
     };
+
+    const inputChange = (e) => {
+        // console.log(e.target.name)
+        // console.log(e.target.value)
+        switch (e.target.name) {
+            case "name":
+                setName(e.target.value);
+                break;
+            case "overview":
+                setOverView(e.target.value);
+                break;
+            case "rating":
+                setRating(e.target.value);
+                break;
+            case "imageURL":
+                setImageURL(e.target.value);
+                break;
+            default:
+                break;
+        }
+    }
+
 
     return (
         <div className="container" style={
@@ -96,7 +125,8 @@ const EditMovie = () => {
                         <input type="text"
                             className="form-control"
                             name="name"
-                            value = {name} />
+                            value = {name} 
+                            onChange = {inputChange} />
                     </div>
                     <div className="form-group col-md-2">
                         <label htmlFor="inputRating">Rating</label>
@@ -104,7 +134,8 @@ const EditMovie = () => {
                             type="text"
                             className="form-control"
                             name="rating"
-                            value = {rating} />
+                            value = {rating}
+                            onChange = {inputChange} />
                     </div>
                 </div>
                 <div className="form-row">
@@ -114,7 +145,8 @@ const EditMovie = () => {
                             type="text"
                             className="form-control"
                             name="imageURL"
-                            value = {imageURL} />
+                            value = {imageURL} 
+                            onChange = {inputChange}/>
                     </div>
                 </div>
                 <div className="form-row"> 
@@ -124,10 +156,11 @@ const EditMovie = () => {
                             className="form-control"
                             name="overview"
                             value = {overview}
+                            onChange = {inputChange}
                             rows="5"></textarea>
                     </div>
                 </div>
-                <input type="submit" className="btn btn-danger btn-block" value="Add Movie" />
+                <input type="submit" className="btn btn-danger btn-block" value="Edit Movie" />
             </form>
         </div>
     )
