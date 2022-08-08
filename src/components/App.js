@@ -12,6 +12,7 @@ import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 
 import AddMovie from './AddMovie';
+import EditMovie from './EditMovie';
 
 
 
@@ -184,6 +185,10 @@ class App extends React.Component {
             <AddMovie
               onAddMovie={(movie) => { this.addMovie(movie) }}
             />
+          } />
+
+          <Route path="/editMovie/:id" element={
+            <EditMovie/>
           } />
 
         </Routes>

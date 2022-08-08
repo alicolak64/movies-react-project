@@ -58,7 +58,7 @@ const MovieList = (props) => {    // If a component is a stateless functional co
                                 <Link 
                                 type="button" 
                                 className="btn btn-md btn-outline-primary" 
-                                to={`edit/${movie.id}`}>
+                                to={`editMovie/${movie.id}`}>
                                     Edit
                                 </Link>
                                 <h2>
