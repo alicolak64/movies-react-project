@@ -176,6 +176,13 @@ class App extends React.Component {
               <div className="row">
                 <div className="col-lg-12">
                   <br />
+                  <h1
+                  style = {{
+                    color : "red" ,
+                    fontSize : "50px" ,
+                    fontFamily : "cursive"
+                  }}
+                  >My Movie List</h1>
                   <br />
                   <SearchBar
                     searchProp={this.searchMovie}
