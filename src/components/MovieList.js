@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 // import './MovieList.css';
 
 const MovieList = (props) => {    // If a component is a stateless functional component, it can be written as a function.
@@ -9,6 +11,20 @@ const MovieList = (props) => {    // If a component is a stateless functional co
     //     console.log(event);
     //     console.log("Clicked on: " + event.name);
     // }
+
+
+    const trucateOverview = (string , maxLength) => {
+        
+        if (!string) {
+            return null;
+        } else if(string.length > maxLength) {
+            return string.substring(0, maxLength) + "...";
+        } else {
+            return string;
+        }
+
+    }
+
 
 
 
@@ -25,11 +41,11 @@ const MovieList = (props) => {    // If a component is a stateless functional co
                             alt={movie.name}
                         />
                         <div className="card-body">
-                            <h3 className="card-title">
+                            <h4 className="card-title">
                                 {movie.name}
-                            </h3>
+                            </h4>
                             <p className="card-text">
-                                {movie.overview}
+                                {trucateOverview(movie.overview, 200)}
                             </p>
                             <div className="d-flex justify-content-between align-items-center">
                                 <button type="button" onClick={
@@ -39,6 +55,12 @@ const MovieList = (props) => {    // If a component is a stateless functional co
                                 } className="btn btn-md btn-outline-danger">
                                     Delete
                                 </button>
+                                <Link 
+                                type="button" 
+                                className="btn btn-md btn-outline-primary" 
+                                to={`edit/${movie.id}`}>
+                                    Edit
+                                </Link>
                                 <h2>
                                     <span className="badge bg-info">
                                     {movie.rating % 1 === 0 ? movie.rating + ".0" : movie.rating}
