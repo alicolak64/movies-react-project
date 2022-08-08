@@ -2,6 +2,8 @@ import React from 'react'
 
 import { useNavigate } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+
 import serialize from 'form-serialize';
 
 
@@ -20,9 +22,39 @@ const AddMovie = (props) => {
     };
 
     return (
-        <div className="container">
+        <div className="container" style={
+            {
+                height:"100%" ,
+                margin : "0 auto", 
+                verticalAlign:"middle",
+                align:"center" ,
+                horizontalAlign:"center"
+            }
+        }> 
             <form className="mt-5" onSubmit={handleFormSubmit}>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div className="row">
+                <div className='col-lg-1'>
+                <Link
+              to={{ pathname: "/"}}
+              type="button"
+              className="btn btn-nd btn-info"
+              style={{ float: 'left' }}
+            >
+              Back
+            </Link>
+                </div>
+                <div className='col-lg-11'>
             <input className="form-control" id="disabledInput" type="text" placeholder="Fill The Form To Add A Movie.." disabled/>
+            </div>
+            </div>
                 <div className="form-row">
                     <div className="form-group col-md-10">
                         <label htmlFor="inputName">Name</label>
