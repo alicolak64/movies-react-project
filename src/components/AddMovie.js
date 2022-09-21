@@ -13,11 +13,11 @@ const AddMovie = (props) => {
 
     const navigate = useNavigate();
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         console.log(e)
         const newMovie = serialize(e.target, { hash: true });
-        props.onAddMovie(newMovie);
+        await props.onAddMovie(newMovie);
         navigate("/")
     };
 

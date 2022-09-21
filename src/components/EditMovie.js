@@ -48,7 +48,7 @@ const EditMovie = (props) => {
           .catch(console.error);
       }, [])
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         console.log(e)
         const updatedMovie = {
@@ -58,8 +58,8 @@ const EditMovie = (props) => {
             imageURL : imageURL
         }
         console.log(updatedMovie)
-        axios.put("http://localhost:3002/movies/" + id , updatedMovie)
-        props.editMovie()
+        await axios.put("http://localhost:3002/movies/" + id , updatedMovie)
+        await props.editMovie()
         navigate("/")
     };
 

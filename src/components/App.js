@@ -15,9 +15,6 @@ import AddMovie from './AddMovie';
 import EditMovie from './EditMovie';
 
 
-
-
-
 /*
 HTTP Method
 
@@ -76,7 +73,7 @@ class App extends React.Component {
   }
 
   editMovie = async () => {
-    this.getMovies()
+    await this.getMovies()
   }
   
 
@@ -89,7 +86,7 @@ class App extends React.Component {
     }
     )
     )
-    this.getMovies()
+    await this.getMovies()
   }
 
 
